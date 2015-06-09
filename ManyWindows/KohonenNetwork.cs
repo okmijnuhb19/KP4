@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManyWindows
 {
-    class KohonenNetwork
+    public class KohonenNetwork
     {
         private readonly Input[] _inputs;
         private readonly Neuron[] _neurons;

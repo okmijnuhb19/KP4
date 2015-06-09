@@ -35,9 +35,9 @@ namespace ManyWindows
         {
             Filter.Median3x3(ref image);
             Filter.Monochrome(ref image, 100);
-            
 
-            image.Save(@"C:\xampp\One.bmp");
+
+            image.Save(Environment.CurrentDirectory + @"\" + @"One.bmp");
             _td.Detect(image);
             var vectros = _td.GetVectors();
             var message = String.Empty;
@@ -66,7 +66,7 @@ namespace ManyWindows
             int name = 1;
             foreach (var symbol in _td.Symbols)
             {
-                symbol.Pattern.Save(@"text\" + name.ToString() + ".bmp");
+                symbol.Pattern.Save(Environment.CurrentDirectory + @"\" + @"text\" + name.ToString() + ".bmp");
                 name++;
                
             }
@@ -90,13 +90,12 @@ namespace ManyWindows
             Bitmap bmp;
             int[] vector;
             char symbol;
-
             _kn._fonts++;
 
             for (var i = 0; i < 26; i++)
             {
                 symbol = (char)('A' + i); 
-                bmp = new Bitmap(Bitmap.FromFile(Font + @"\" + symbol + ".bmp"));
+                bmp = new Bitmap(Bitmap.FromFile(Environment.CurrentDirectory+@"\"+ Font + @"\" + symbol + ".bmp"));
                 vector = Mat.GetVector(bmp);
                 _kn.Study(vector, i);
             }
